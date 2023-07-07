@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5qbhp2dnrxf"]
+
+[ext_resource type="Script" path="res://cycle_colours_rect.gd" id="1"]
+[ext_resource type="Script" path="res://main.gd" id="1_056mg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a2lr0"]
+font_size = 50
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_056mg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+colours = PackedColorArray(0, 0.788235, 0.988235, 1, 1, 0.27451, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -281.0
+offset_right = 173.0
+offset_bottom = -209.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Get lost, bug!!!"
+label_settings = SubResource("LabelSettings_a2lr0")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="Label"]
+wait_time = 1.67
+autostart = true
+
+[node name="Timer2" type="Timer" parent="Label"]
+wait_time = 2.7
+autostart = true
+
+[connection signal="timeout" from="Label/Timer" to="Label" method="set_uppercase" binds= [true]]
+[connection signal="timeout" from="Label/Timer2" to="Label" method="set_uppercase" binds= [false]]
